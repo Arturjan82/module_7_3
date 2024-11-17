@@ -13,14 +13,6 @@ class WordsFinder:
                     text = line.lower()
                     for i in result:
                         text = text.replace(i,'')
-                    # text = text.replace(',','')
-                    # text = text.replace('.','')
-                    # text = text.replace('=','')
-                    # text = text.replace('!','')
-                    # text = text.replace('?','')
-                    # text = text.replace(';','')
-                    # text = text.replace(':','')
-                    # text = text.replace('-','')
                     text = text.replace('\n', ' ')
                     text1 += text
                 text2 = text1.split(' ')
