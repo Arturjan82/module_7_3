@@ -1,4 +1,5 @@
-
+import string
+result = string.punctuation
 class WordsFinder:
     def __init__(self, *file):
         self.file = file
@@ -10,22 +11,25 @@ class WordsFinder:
             with open(filename, encoding='utf-8') as file1:
                 for line in file1:
                     text = line.lower()
-                    text = text.replace(',','')
-                    text = text.replace('.','')
-                    text = text.replace('=','')
-                    text = text.replace('!','')
-                    text = text.replace('?','')
-                    text = text.replace(';','')
-                    text = text.replace(':','')
-                    text = text.replace('-','')
-                    text = text.replace('\n', '')
-                    text1 += text + ' '
+                    for i in result:
+                        text = text.replace(i,'')
+                    # text = text.replace(',','')
+                    # text = text.replace('.','')
+                    # text = text.replace('=','')
+                    # text = text.replace('!','')
+                    # text = text.replace('?','')
+                    # text = text.replace(';','')
+                    # text = text.replace(':','')
+                    # text = text.replace('-','')
+                    text = text.replace('\n', ' ')
+                    text1 += text
                 text2 = text1.split(' ')
                 all_words[filename] = text2
         return all_words
 
     def find(self, word):
-        for name, words in self.get_all_words().items():
+        slovarik = self.get_all_words().items()
+        for name, words in slovarik:
             slovar = {}
             for i in range(0, len(words)+1):
                 if  word.lower() == words[i]:
@@ -34,7 +38,8 @@ class WordsFinder:
 
 
     def count(self, word):
-        for name, words in self.get_all_words().items():
+        slovarik = self.get_all_words().items()
+        for name, words in slovarik:
             slovar = {}
             kol = words.count(word.lower())
             slovar[name] = kol
